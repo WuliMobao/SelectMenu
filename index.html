@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SelectMenu</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/bootstrap-3.3.4.css">
+	<link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">
+	<link rel="stylesheet" href="https://cdn.bootcss.com/SyntaxHighlighter/3.0.83/styles/shCore.css" type="text/css">
+	<link rel="stylesheet" href="https://cdn.bootcss.com/SyntaxHighlighter/3.0.83/styles/shThemeDefault.css" type="text/css">
+	<link rel="stylesheet" href="selectmenu.css" type="text/css">
+</head>
+
+<body>
+            <div class="col-md-12">
+                    <p><strong>客户姓名：</strong>
+                        <button type="button" class="btn btn-default" id="demoMultiple">选择</button>
+                    </p>
+					<div class="panel panel-default">
+								<div class="panel-body" id="通讯录"></div>
+					</div>
+            </div>
+
+    <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/SyntaxHighlighter/3.0.83/scripts/shCore.js" ></script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/SyntaxHighlighter/3.0.83/scripts/shBrushXml.js" ></script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/SyntaxHighlighter/3.0.83/scripts/shBrushCss.js" ></script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/SyntaxHighlighter/3.0.83/scripts/shBrushJava.js" ></script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/SyntaxHighlighter/3.0.83/scripts/shBrushJScript.js" ></script>
+    <script type="text/javascript" src="selectmenu.min.js" ></script>    
+    <script type="text/javascript">
+	$(function(){
+
+		var selectMenuGroupData = [{
+			title : '客户',
+			list :[
+				{id:1 ,phoneno:'13123456789',company:'光宝联合（北京）信息科技有限公司',name:'阿杜'},
+				{id:2 ,phoneno:'13123456789',company:'光宝联合（北京）信息科技有限公司',name:'安倍晋三'},
+				{id:3 ,phoneno:'13123456789',company:'光宝联合（北京）信息科技有限公司',name:'白百何'},
+				{id:4 ,phoneno:'13123456789',company:'光宝联合（北京）信息科技有限公司',name:'蔡英文'},
+				{id:5 ,phoneno:'13123456789',company:'光宝联合（北京）信息科技有限公司',name:'狄仁杰'},
+				{id:6 ,phoneno:'13123456789',company:'光宝联合（北京）信息科技有限公司',name:'董仲舒'},
+				{id:7 ,phoneno:'13123456789',company:'光宝联合（北京）信息科技有限公司',name:'尔康'},
+				{id:8 ,phoneno:'13123456789',company:'光宝联合（北京）信息科技有限公司',name:'房祖名'},
+				{id:9 ,phoneno:'13123456789',company:'光宝联合（北京）信息科技有限公司',name:'郭敬明'},
+				{id:10,phoneno:'13123456789',company:'光宝联合（北京）信息科技有限公司',name:'韩庚'},
+				{id:11,phoneno:'13123456789',company:'光宝联合（北京）信息科技有限公司',name:'黄飞鸿'}
+			]
+		},{
+			title : '同事',
+			list : [
+				{id:12,phoneno:'13123456789',company:'北山街道社区卫生服务中心',name:'陈彬'},
+				{id:13,phoneno:'13123456789',company:'北山街道社区卫生服务中心',name:'姚磊'},
+				{id:14,phoneno:'13123456789',company:'北山街道社区卫生服务中心',name:'许升'}
+			]}
+		];
+		
+		$('#demoMultiple').click(function(){
+			$(this).selectMenu({
+				showField : 'name',
+				keyField : 'id',
+				listSize : 8,
+				multiple : true,
+				lang : 'cn',
+				position : 'left',
+				data : selectMenuGroupData,
+				eSelect : function(data){
+					$('#通讯录').empty();
+					if(data && data.length > 0){
+						$.each(data,function(i,row){
+							$('#通讯录').append('<p><strong>'+row.name+'</strong> - '+row.phoneno+'(' + row.company + ')</p>');
+						});
+					}
+				}
+			});
+		});
+		SyntaxHighlighter.all();
+	});
+    </script>
+</body>
+</html>
